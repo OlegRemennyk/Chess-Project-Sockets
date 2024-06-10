@@ -289,10 +289,10 @@ export default function Referee() {
             <div className="modal hidden" ref={modalRef}>
                 <div className="modal-body">
 
-                    <img onClick={() => promotePawn(PieceType.ROOK)} src={`src/assets/pieces/rook-${promotionTeamType()}.png`} />
-                    <img onClick={() => promotePawn(PieceType.BISHOP)} src={`src/assets/pieces/bishop-${promotionTeamType()}.png`} />
-                    <img onClick={() => promotePawn(PieceType.KNIGHT)} src={`src/assets/pieces/knight-${promotionTeamType()}.png`} />
-                    <img onClick={() => promotePawn(PieceType.QUEEN)} src={`src/assets/pieces/queen-${promotionTeamType()}.png`} />
+                    <img onClick={() => promotePawn(PieceType.ROOK)} src={`public/pieces/rook-${promotionTeamType()}.png`} />
+                    <img onClick={() => promotePawn(PieceType.BISHOP)} src={`public/pieces/bishop-${promotionTeamType()}.png`} />
+                    <img onClick={() => promotePawn(PieceType.KNIGHT)} src={`public/pieces/knight-${promotionTeamType()}.png`} />
+                    <img onClick={() => promotePawn(PieceType.QUEEN)} src={`public/pieces/queen-${promotionTeamType()}.png`} />
                 </div>
             </div>
             <div className="modal hidden" ref={checkmateModalRef}>
