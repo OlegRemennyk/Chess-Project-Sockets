@@ -20,7 +20,7 @@ export default function Referee() {
         const saveBoard = localStorage.getItem("board");
         if (saveBoard) {
             const savedBoardParsed = JSON.parse(saveBoard);
-            console.log(savedBoardParsed)
+            
 
             const clonedBoard = initialBoard.clone();
             clonedBoard.pieces = savedBoardParsed.pieces.map((p: any) => {
