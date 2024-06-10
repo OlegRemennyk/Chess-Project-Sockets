@@ -1,6 +1,6 @@
 import { TeamType, PieceType } from "../Types";
 import { Position } from "./Position";
-import bishop from '/static/images/bishop-black.png'
+
 
 
 export class Piece {
@@ -13,13 +13,14 @@ export class Piece {
     constructor(position: Position, type: PieceType,
         team: TeamType, hasMoved: boolean,
         possibleMoves: Position[] = []) {
-        this.image = `public/static/images/${type}-${team}.png`;
+        this.image = `/static/images/${type}-${team}.png`;
         this.position = position;
         this.type = type;
         this.team = team;
         this.possibleMoves = possibleMoves;
         this.hasMoved = hasMoved;
     }
+    
 
     get isPawn() : boolean {
         return this.type === PieceType.PAWN

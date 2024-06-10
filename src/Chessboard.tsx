@@ -8,6 +8,7 @@ import {
 } from "./Constants";
 import { Piece, Position } from "./models";
 import Tile from "./Tile";
+import { PieceType, TeamType } from "./Types";
 
 
 interface Props {
@@ -114,7 +115,8 @@ export default function Chessboard({playMove, pieces} : Props) {
         p.samePosition(new Position(i, j))
       );
       const image = piece ? piece.image : undefined;
-
+      const type = piece ? piece.type : undefined;
+      const color = piece ? piece.team : undefined;
       const currentPiece = activePiece != null ? pieces.find(p => p.samePosition(grabPosition)) : undefined;
       const highlight = currentPiece?.possibleMoves ?
       currentPiece.possibleMoves.some(p => p.samePosition(new Position(i, j))) : false;
@@ -124,7 +126,9 @@ export default function Chessboard({playMove, pieces} : Props) {
           key={`${i}${j}`}
           number={number}
           image={image}
+          type = {type}
           highlight={highlight}
+          // color = {color}
         />
       )
     }
