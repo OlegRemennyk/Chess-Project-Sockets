@@ -11,7 +11,7 @@ export class Piece {
     constructor(position: Position, type: PieceType,
         team: TeamType, hasMoved: boolean,
         possibleMoves: Position[] = []) {
-        this.image = `public/pieces/${type}-${team}.png`;
+        this.image = `public/static/images/${type}-${team}.png`;
         this.position = position;
         this.type = type;
         this.team = team;
