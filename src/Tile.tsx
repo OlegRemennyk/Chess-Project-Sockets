@@ -16,9 +16,7 @@ export default function Tile({ number, image, highlight, type , color }: Props) 
     number % 2 !== 0 && "white-tile",
     highlight && "tile-highlight",
     image && "chess-piece-tile"].filter(Boolean).join(' ');
-    // const nigger2 = type ? type : 'pawn'
-    // const nigger3 = color ? color : 'black'
-    // const key : string = nigger3 + nigger2
+   
   return (
     <div className={className}>
       {image && <div style={{ backgroundImage: `url(${image})` }}
