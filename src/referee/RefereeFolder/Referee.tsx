@@ -7,7 +7,7 @@ import { Pawn } from "../../models/Pawn";
 import { PieceType, TeamType } from "../../Types";
 import Chessboard from "../../Chessboard";
 
-const ws = new WebSocket('ws://chess-sockets-1lb7.onrender.com');
+const ws = new WebSocket('wss://chess-sockets-1lb7.onrender.com');
 
 export default function Referee() {
     const [board, setBoard] = useState<Board>(initialBoard.clone());
