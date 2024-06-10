@@ -1,5 +1,7 @@
 import { TeamType, PieceType } from "../Types";
 import { Position } from "./Position";
+import bishop from '/static/images/bishop-black.png'
+
 
 export class Piece {
     image: string;
