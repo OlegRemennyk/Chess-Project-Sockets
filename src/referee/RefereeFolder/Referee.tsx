@@ -165,6 +165,7 @@ export default function Referee() {
                 console.log("WINNING TEAM: " + clonedBoard.winningTeam)
                 ws.send(JSON.stringify({type:"restart"}));
             }
+           
             // here we should update the socket to let the opponent know
             // that we made a move
             ws.send(JSON.stringify({playedPiece, destination,enPassantMove}));
@@ -219,32 +220,7 @@ export default function Referee() {
         return false;
     }
 
-    //TODO
-    //Add stalemate!
-    // function isValidMove(initialPosition: Position, desiredPosition: Position, type: PieceType, team: TeamType) {
-    //     let validMove = false;
-    //     switch (type) {
-    //         case PieceType.PAWN:
-    //             validMove = pawnMove(initialPosition, desiredPosition, team, board.pieces);
-    //             break;
-    //         case PieceType.KNIGHT:
-    //             validMove = knightMove(initialPosition, desiredPosition, team, board.pieces);
-    //             break;
-    //         case PieceType.BISHOP:
-    //             validMove = bishopMove(initialPosition, desiredPosition, team, board.pieces);
-    //             break;
-    //         case PieceType.ROOK:
-    //             validMove = rookMove(initialPosition, desiredPosition, team, board.pieces);
-    //             break;
-    //         case PieceType.QUEEN:
-    //             validMove = queenMove(initialPosition, desiredPosition, team, board.pieces);
-    //             break;
-    //         case PieceType.KING:
-    //             validMove = kingMove(initialPosition, desiredPosition, team, board.pieces);
-    //     }
-
-    //     return validMove;
-    // }
+    
 
     function promotePawn(pieceType: PieceType) {
         if (promotionPawn === undefined) {
@@ -280,22 +256,32 @@ export default function Referee() {
         checkmateModalRef.current?.classList.add("hidden");
         setBoard(initialBoard.clone());
         localStorage.removeItem("board");
-
+        board.restartGame = true;
+            
+        
     }
+    
+    
 
     return (
         <>
+           
             <p style={{ color: "black", fontSize: "24px", textAlign: "center" }}>Total turns: {board.totalTurns}</p>
+
             <p style={{ color: "black", fontSize: "24px", textAlign: "center" }}>Team: {myTeamType}</p>
+            <div className="btn-reset-div">
+            <button className="resetBtn" onClick={restartGame}>Play again</button>
+            </div>
             <div className="modal hidden" ref={modalRef}>
                 <div className="modal-body">
 
-                    <img onClick={() => promotePawn(PieceType.ROOK)} src={`public/static/images/rook-${promotionTeamType()}.png`} />
-                    <img onClick={() => promotePawn(PieceType.BISHOP)} src={`public/static/images/bishop-${promotionTeamType()}.png`} />
-                    <img onClick={() => promotePawn(PieceType.KNIGHT)} src={`public/static/images/knight-${promotionTeamType()}.png`} />
-                    <img onClick={() => promotePawn(PieceType.QUEEN)} src={`public/static/images/queen-${promotionTeamType()}.png`} />
+                    <img onClick={() => promotePawn(PieceType.ROOK)} src={`/static/images/rook-${promotionTeamType()}.png`} />
+                    <img onClick={() => promotePawn(PieceType.BISHOP)} src={`/static/images/bishop-${promotionTeamType()}.png`} />
+                    <img onClick={() => promotePawn(PieceType.KNIGHT)} src={`/static/images/knight-${promotionTeamType()}.png`} />
+                    <img onClick={() => promotePawn(PieceType.QUEEN)} src={`/static/images/queen-${promotionTeamType()}.png`} />
                 </div>
             </div>
+           
             <div className="modal hidden" ref={checkmateModalRef}>
                 <div className="modal-body">
                     <div className="checkmate-body">

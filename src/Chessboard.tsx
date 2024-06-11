@@ -5,10 +5,11 @@ import {
   VERTICAL_AXIS,
   HORIZONTAL_AXIS,
   GRID_SIZE,
+  initialBoard,
 } from "./Constants";
 import { Piece, Position } from "./models";
 import Tile from "./Tile";
-import { PieceType, TeamType } from "./Types";
+
 
 
 interface Props {
@@ -132,7 +133,10 @@ export default function Chessboard({playMove, pieces} : Props) {
         />
       )
     }
+    
   }
+  
+ 
 
   return (
     <>
@@ -145,6 +149,7 @@ export default function Chessboard({playMove, pieces} : Props) {
       >
         {board}
       </div>
+      
     </>
   );
 }

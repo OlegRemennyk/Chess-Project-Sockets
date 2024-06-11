@@ -1,3 +1,4 @@
+import { initialBoard } from "../Constants";
 import { getPossibleBishopMoves, getPossibleKingMoves, getPossibleKnightMoves, getPossiblePawnMoves, getPossibleQueenMoves, getPossibleRookMoves, getCastlingMoves } from "../referee/rules";
 import { PieceType, TeamType } from "../Types";
 import { Pawn } from "./Pawn";
@@ -8,15 +9,19 @@ export class Board {
     pieces: Piece[];
     totalTurns: number;
     winningTeam?: TeamType;
+    restartGame? : boolean
 
     constructor(pieces: Piece[], totalTurns: number) {
         this.pieces = pieces;
         this.totalTurns = totalTurns;
+       
     }
 
     get currentTeam(): TeamType {
         return this.totalTurns % 2 === 0 ? TeamType.OPPONENT : TeamType.OUR;
     }
+
+   
 
     // calculateAllMoves() {
     //     // Calculate the moves of all the pieces
