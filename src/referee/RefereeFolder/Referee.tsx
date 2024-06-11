@@ -80,6 +80,10 @@ export default function Referee() {
                 localStorage.removeItem("board");
 
             }
+            else if (data.type === "restart2") {
+                setBoard(initialBoard.clone());
+                localStorage.removeItem("board");
+            }
             else{
                 console.log(data)
                 const playedPiece = data.playedPiece
@@ -165,6 +169,7 @@ export default function Referee() {
                 console.log("WINNING TEAM: " + clonedBoard.winningTeam)
                 ws.send(JSON.stringify({type:"restart"}));
             }
+            
            
             // here we should update the socket to let the opponent know
             // that we made a move
@@ -256,9 +261,14 @@ export default function Referee() {
         checkmateModalRef.current?.classList.add("hidden");
         setBoard(initialBoard.clone());
         localStorage.removeItem("board");
-        board.restartGame = true;
+        // ws.send(JSON.stringify({type:'restart'}))
             
         
+    }
+    function resetGameButton(){
+        setBoard(initialBoard.clone())
+        localStorage.removeItem("board");
+        ws.send(JSON.stringify({type:'restart2'}))
     }
     
     
@@ -270,7 +280,7 @@ export default function Referee() {
 
             <p style={{ color: "black", fontSize: "24px", textAlign: "center" }}>Team: {myTeamType}</p>
             <div className="btn-reset-div">
-            <button className="resetBtn" onClick={restartGame}>Play again</button>
+            <button className="resetBtn" onClick={resetGameButton}>Play again</button>
             </div>
             <div className="modal hidden" ref={modalRef}>
                 <div className="modal-body">
